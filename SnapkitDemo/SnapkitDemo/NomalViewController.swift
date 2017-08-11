@@ -13,7 +13,7 @@ class NomalViewController: UIViewController {
 
     var testView = UIView()
     var view1 = UIView()
-    
+    var updateContraint:Constraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,23 @@ class NomalViewController: UIViewController {
     }
     
      func tapAction(sender:UIButton) {
+        
+        updateContraint?.deactivate()
+        let view2 = UIView()
+        view2.backgroundColor = UIColor.orange
+        testView.addSubview(view2)
+        view2.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            updateContraint = make.top.equalTo(view1.snp.bottom).offset(0).constraint
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+        }
+        
+        testView.updateConstraints()
+    }
+    
+    func tapAction1(sender:UIButton) {
         let view2 = UIView()
         view2.backgroundColor = UIColor.orange
         testView.addSubview(view2)
@@ -54,6 +71,7 @@ class NomalViewController: UIViewController {
             make.height.equalTo(100)
         }
     }
+    
     
     private func setup() {
         
@@ -72,6 +90,7 @@ class NomalViewController: UIViewController {
             make.top.left.equalTo(0)
             make.width.equalTo(120)
             make.height.equalTo(50)
+            updateContraint = make.bottom.equalTo(0).constraint
         }
     }
     
