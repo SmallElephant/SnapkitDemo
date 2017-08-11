@@ -49,9 +49,9 @@ class NomalViewController: UIViewController {
         view2.snp.makeConstraints { (make) in
             make.width.equalTo(100)
             make.height.equalTo(50)
-            updateContraint = make.top.equalTo(view1.snp.bottom).offset(0).constraint
+            make.top.equalTo(view1.snp.bottom).offset(0)
             make.left.equalTo(0)
-            make.right.equalTo(0)
+            updateContraint = make.bottom.equalTo(0).constraint
         }
         
         testView.updateConstraints()
@@ -81,7 +81,7 @@ class NomalViewController: UIViewController {
         testView.snp.makeConstraints { (make) in
             make.top.left.equalTo(100)
             make.width.equalTo(200)
-            make.height.equalTo(50)
+          //  make.height.equalTo(50)
         }
         
         view1.backgroundColor = UIColor.blue
